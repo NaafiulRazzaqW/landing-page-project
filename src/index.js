@@ -3,11 +3,15 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Todo from './form/todo';
+import Banner from './components/Banner';
+import Nav from './components/Nav';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    {/* <Todo /> */}
+    <App/>
   </React.StrictMode>
 );
 

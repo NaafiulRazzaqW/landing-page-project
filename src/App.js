@@ -1,24 +1,58 @@
 import logo from './logo.svg';
 import './App.css';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import Nav from './components/Nav';
+import Banner from './components/Banner';
+import Projects from './components/Projects';
+import { Suspense } from 'react';
+import Createaccount from './Createaccount';
+import Login from './Loginaccount';
+import Perpustakaan from './form/Formperpustakaan';
+import Register from './form/Registermember';
+import Todo from './form/todo';
 
 function App() {
+
+  const router = createBrowserRouter([
+    {
+      path: '/',
+      element: <Nav/>,
+      children: [
+        {
+          path: '/',
+          element: <Banner/>
+        },
+        {
+          path: '/project',
+          element: <Projects/>
+        }
+      ]
+    },
+    {
+      path: '/create-account',
+      element: <Createaccount/>
+    },
+    {
+      path: '/login',
+      element: <Login/>
+    },
+    {
+      path: '/form-perpustakaan',
+      element: <Perpustakaan/>
+    },
+    {
+      path: '/form-pendaftaran',
+      element: <Register/>
+    },
+    {
+      path: '/todo',
+      element: <Todo/>
+    }
+  ])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Suspense fallback={<h1>Loading</h1>}>
+      <RouterProvider router={router}/>
+    </Suspense>
   );
 }
 
